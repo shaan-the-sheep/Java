@@ -21,7 +21,20 @@ public class Opposites {
                     + " as " + word_list1.get(number2) + " is to ..." );
         }
         
-        private static final int NUMGOES = 10;
+        private static void remove_from_lists(int number1, int number2) {
+                // getting elements used in question
+                String obj1 = word_list1.get(number1);
+                String obj2 = word_list1.get(number2);
+                String obj3 = word_list2.get(number1);
+                String obj4 = word_list2.get(number2);
+                // removing objects from list, can't remove indexes as change each time item is removed
+                word_list1.remove(obj1);
+                word_list1.remove(obj2);
+                word_list2.remove(obj3);
+                word_list2.remove(obj4);
+        }
+        
+        private static final int NUMGOES = 5;
         
         public static void main(String[] args) {
 
@@ -49,6 +62,8 @@ public class Opposites {
                 else {
                     System.out.println("Wrong answer\n");
                 }
+                
+                remove_from_lists(pick1,pick2);
             }
         
        System.out.println(name + " you got " + score + " out of " + NUMGOES);
