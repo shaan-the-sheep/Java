@@ -3,6 +3,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Opposites {
    
@@ -34,13 +37,29 @@ public class Opposites {
                 word_list2.remove(obj4);
         }
         
+        private static void writeToFile(String className, String name, int score){
+            try {
+                File myFile = new File(className + ".txt");
+                FileWriter myWriter = new FileWriter(className + ".txt",true);
+                myWriter.write("\n" + name + ", " + score);
+                myWriter.close();
+                }
+                catch (IOException e) {
+                    System.out.println("An error occurred.");
+                    e.printStackTrace();
+                    return;
+                }     
+        }
+        
         private static final int NUMGOES = 5;
         
-        public static void main(String[] args) {
+        public static void main(String[] args) {         
 
             Scanner myObj = new Scanner(System.in);  // Create a Scanner object
             System.out.println("Enter name: ");
             String name = myObj.nextLine();
+
+            
             int score = 0;
             Random pick = new Random();
             for (int n = 1; n < NUMGOES + 1; n++) {
@@ -65,11 +84,12 @@ public class Opposites {
                 
                 remove_from_lists(pick1,pick2);
             }
+        System.out.println(name + " you got " + score + " out of " + NUMGOES);
         
-       System.out.println(name + " you got " + score + " out of " + NUMGOES);
-                 
+        System.out.println("Enter class: ");
+        String className = myObj.nextLine();    
+        writeToFile(className,name,score);                 
     }
-
 }
     
     
