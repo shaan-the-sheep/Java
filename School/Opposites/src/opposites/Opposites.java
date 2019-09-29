@@ -44,7 +44,7 @@ public class Opposites {
                 myWriter.write("\n" + name + ", " + score);
                 myWriter.close();
                 }
-                catch (IOException e) {
+            catch (IOException e) {
                     System.out.println("An error occurred.");
                     e.printStackTrace();
                     return;
@@ -69,6 +69,8 @@ public class Opposites {
                 while (pick2 == pick1) {
                     pick2 = pick.nextInt(word_list2.size()-1);
                 }
+                System.out.println(word_list1);
+                System.out.println(word_list2 + "\n");
                 make_question(pick1,pick2);
                 String correct_answer = word_list2.get(pick2);
                 System.out.println("Enter answer: ");
